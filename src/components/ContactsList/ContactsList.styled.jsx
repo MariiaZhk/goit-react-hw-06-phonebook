@@ -5,6 +5,10 @@ export const ContactsListWrap = styled.div`
 `;
 
 export const ContactsListStyled = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+
   margin: 30px 0;
 `;
 

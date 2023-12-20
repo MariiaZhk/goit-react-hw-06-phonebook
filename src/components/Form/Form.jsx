@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { Button, FormStyled, Input, Label } from 'components/Form/Form.styled';
+import { createContactAction, contactsValue } from '../../redux/phonebookSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const Form = ({ createContact, contacts }) => {
+export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
+  const contacts = useSelector(contactsValue);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -28,7 +33,7 @@ export const Form = ({ createContact, contacts }) => {
       resetForm();
       return;
     }
-    createContact(newContact);
+    dispatch(createContactAction(newContact));
     resetForm();
   };
 
